@@ -138,14 +138,14 @@ const OPEN_WEATHER_PARAMS = {
 };
 
 const UTILS_TEXT = {
-  HEADER: {
+  headers: {
     main: "Weather Dashboard",
     searchCityForm: "Search for a City: ",
   },
-  BUTTON: {
+  buttons: {
     search: "Search",
   },
-  PLACEHOLDER: {
+  placeholders: {
     inputCityName: "Enter name of the city",
   },
 };
