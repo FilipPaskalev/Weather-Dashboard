@@ -116,7 +116,11 @@ const mainHeader = $("h1");
 const headerTxt = "Weather Dashboard";
 const headerForm = "Search for a City: ";
 
-var currentCity = "";
+var currentCity = {
+  name: "Birmingham",
+  lat: 0,
+  lon: 0,
+};
 
 const currentDate = dayjs();
 
@@ -141,7 +145,7 @@ function getNameForSearchedCity() {
   $(searchForm).submit(function (event) {
     event.preventDefault();
 
-    currentCity = $(searchInput).val();
+    currentCity.name = $(searchInput).val();
   });
 }
 
@@ -151,6 +155,7 @@ function resetNameForSearchedCity() {
 
 $(document).ready(function () {
   loadAllInitialText();
+  // getUserGeolocation() //TODO: implement this after finish with the code - get default location of the user if is allowed, if not leave default location
   getNameForSearchedCity();
   resetNameForSearchedCity();
 });
