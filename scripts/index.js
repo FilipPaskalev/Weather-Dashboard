@@ -1,80 +1,91 @@
-const OPEN_WEATHER_MAP_API_KEY = "691ac0267ff69aea88b780e2223ae9f4";
+const API_KEYS = {
+  currentWeatherData: "ae3a76f05c3abe1e11d6e4bac3ee18fe",
+  fiveDaysWeatherForecast: "89bcb64cccfd3cf71adffaab58499f00",
+  directGeocoding: "34e16918a61a82d1589798842ddb3d2e",
+};
 
-// Example https://api.openweathermap.org/data/2.5/forecast?lat=52.4796992&lon=-1.9026911&appid=691ac0267ff69aea88b780e2223ae9f4
-// With param Birmingham
-const OPEN_WEATHER_MAP = {
-  API_KEY: OPEN_WEATHER_MAP_API_KEY,
+const OPEN_WEATHER_MAP_DOMAIN = {
   domain: "https://api.openweathermap.org",
-  subdomain: "data",
-  apiVersion: "2.5",
-  searchKey: "forecast",
-  PARAMS: {
-    LAT: {
+  subdomains: {
+    weatherData: "data",
+    geocoding: "geo",
+  },
+  apiVersion: {
+    weatherData: "2.5",
+    geocoding: "1.0",
+  },
+  searchKey: {
+    currentWeatherData: "weather",
+    fiveDaysWeatherForecast: "forecast",
+  },
+};
+
+const OPEN_WEATHER_PARAMS = {
+  // Example https://api.openweathermap.org/data/2.5/weather?lat=52.4796992&lon=-1.9026911&appid=ae3a76f05c3abe1e11d6e4bac3ee18fe
+  // With param Birmingham
+  currentWeatherData: {},
+  // Example https://api.openweathermap.org/data/2.5/forecast?lat=52.4796992&lon=-1.9026911&appid=89bcb64cccfd3cf71adffaab58499f00
+  // With param Birmingham
+  fiveDaysWeatherForecast: {
+    latitude: {
       key: "lat",
       required: true,
       description:
         "Latitude. If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use our Geocoding API. Learn more at https://openweathermap.org/api/geocoding-api",
     },
-    LON: {
+    longitude: {
       key: "lon",
       required: true,
       description:
         "Longitude. If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use our Geocoding API. Learn more at https://openweathermap.org/api/geocoding-api",
     },
-    APP_ID: {
+    apiKey: {
       key: "appid",
       required: true,
       description:
         "Your unique API key (you can always find it on your account page under the API key tab)",
     },
-    MODE: {
+    responseFormat: {
       key: "mode",
       required: false,
       description:
         "Response format. JSON format is used by default. To get data in XML format use mode=xml. Learn more at https://openweathermap.org/forecast5#format",
     },
-    CNT: {
+    timestamp: {
       key: "cnt",
       required: false,
       description:
         "A number of timestamps, which will be returned in the API response. Learn more at https://openweathermap.org/forecast5#limit",
     },
-    UNITS: {
+    units: {
       key: "units",
       required: false,
       description:
         "Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default. Learn more at https://openweathermap.org/forecast5#data",
     },
-    LANG: {
+    language: {
       key: "lang",
       required: false,
       description:
         "You can use the lang parameter to get the output in your language. Learn more at https://openweathermap.org/multi",
     },
   },
-};
-
-// Example https://api.openweathermap.org/geo/1.0/direct?q=birmingham&appid=691ac0267ff69aea88b780e2223ae9f4
-// With lat lon for Birmingham
-const DIRECT_GEOCODING = {
-  API_KEY: OPEN_WEATHER_MAP_API_KEY,
-  domain: "http://api.openweathermap.org",
-  subdomain: "geo",
-  apiVersion: "1.0",
-  PARAMS: {
-    QUERY: {
+  // Example https://api.openweathermap.org/geo/1.0/direct?q=birmingham&appid=34e16918a61a82d1589798842ddb3d2e
+  // With lat lon for Birmingham
+  directGeocoding: {
+    query: {
       key: "q",
       required: true,
       description:
         "City name, state code (only for the US) and country code divided by comma. Please use ISO 3166 country codes.",
     },
-    APP_ID: {
+    apiKey: {
       key: "appid",
       required: true,
       description:
         "Your unique API key (you can always find it on your account page under the API key tab)",
     },
-    LIMIT: {
+    locationLimit: {
       key: "limit",
       required: false,
       description:
@@ -97,9 +108,14 @@ const UTILS_TEXT = {
 };
 
 const UTILS_SETTINGS = {
-  localeStorage: {
+  LOCALE_STORAGE: {
     key: "cities",
     limitOfSearchedCities: 6,
+  },
+  DEFAULT_CITY_LOCATION: {
+    name: "Birmingham",
+    lat: 52.489471,
+    lon: -1.898575,
   },
 };
 
@@ -117,7 +133,7 @@ const headerTxt = "Weather Dashboard";
 const headerForm = "Search for a City: ";
 
 var currentCity = {
-  name: "Birmingham",
+  name: "",
   lat: 0,
   lon: 0,
 };
