@@ -201,21 +201,21 @@ function addCityToLocaleStorage(storageKey, cityName, lat, lon) {}
 
 function loadSearchedCitiesFromLocaleStorage(key) {}
 
+function resetNameForSearchedCity() {
+  $(searchInput).val("");
+}
+
 function getNameForSearchedCity() {
   $(searchForm).submit(function (event) {
     event.preventDefault();
     currentCity.name = $(searchInput).val();
     console.log("🚀 ~ name:", currentCity.name);
+    resetNameForSearchedCity();
   });
-}
-
-function resetNameForSearchedCity() {
-  $(searchInput).val("");
 }
 
 $(document).ready(function () {
   loadAllInitialText();
   // getUserGeolocation() //TODO: implement this after finish with the code - get default location of the user if is allowed, if not leave default location
   getNameForSearchedCity();
-  resetNameForSearchedCity();
 });
