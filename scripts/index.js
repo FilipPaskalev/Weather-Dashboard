@@ -137,28 +137,29 @@ const OPEN_WEATHER_PARAMS = {
   },
 };
 
-const UTILS_TEXT = {
-  headers: {
-    main: "Weather Dashboard",
-    searchCityForm: "Search for a City: ",
+const UTILS = {
+  text: {
+    headers: {
+      main: "Weather Dashboard",
+      searchCityForm: "Search for a City: ",
+    },
+    buttons: {
+      search: "Search",
+    },
+    placeholders: {
+      inputCityName: "Enter name of the city",
+    },
   },
-  buttons: {
-    search: "Search",
-  },
-  placeholders: {
-    inputCityName: "Enter name of the city",
-  },
-};
-
-const UTILS_SETTINGS = {
-  LOCALE_STORAGE: {
-    key: "cities",
-    limitOfSearchedCities: 6,
-  },
-  DEFAULT_CITY_LOCATION: {
-    name: "Birmingham",
-    lat: 52.489471,
-    lon: -1.898575,
+  settings: {
+    localeStorage: {
+      key: "cities",
+      limitOfSearchedCities: 6,
+    },
+    defaultCityInfo: {
+      name: "Birmingham",
+      lat: 52.489471,
+      lon: -1.898575,
+    },
   },
 };
 
