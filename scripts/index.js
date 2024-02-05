@@ -141,8 +141,7 @@ function getNameForSearchedCity() {
   $(searchForm).submit(function (event) {
     event.preventDefault();
 
-    var inputValue = $("#search-input").val();
-    console.log("🚀 ~ inputValue:", inputValue);
+    currentCity = $(searchInput).val();
   });
 }
 
