@@ -137,17 +137,21 @@ function addCityToLocaleStorage(storageKey, cityName, lat, lon) {}
 
 function loadSearchedCitiesFromLocaleStorage(key) {}
 
-function selectSearchedCity() {
-  currentCity = $(searchForm).val();
+function getNameForSearchedCity() {
+  $(searchForm).submit(function (event) {
+    event.preventDefault();
 
-  console.log(currentCity);
+    var inputValue = $("#search-input").val();
+    console.log("🚀 ~ inputValue:", inputValue);
+  });
 }
 
-// set all text when HTML is loaded
+function resetNameForSearchedCity() {
+  $(searchInput).val("");
+}
+
 $(document).ready(function () {
   loadAllInitialText();
-});
-
-$("#search-button").bind("click", function () {
-  selectSearchedCity();
+  getNameForSearchedCity();
+  resetNameForSearchedCity();
 });
