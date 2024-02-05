@@ -7,3 +7,6 @@
 // var historyDiv = $("history");
 // var todaySection = $("today");
 // var forecastSection = $("forecast");
+
+// const headerTxt = "Weather Dashboard";
+// const headerForm = "Search for a City: ";

@@ -83,18 +83,58 @@ const DIRECT_GEOCODING = {
   },
 };
 
-var formHeading = $("#form-heading");
-var searchForm = $("search-form");
-var searchInput = $("search-input");
-var searchBtn = $("search-button");
-var searchBtn = $("search-button");
-var historyDiv = $("history");
-var historyDiv = $("history");
-var todaySection = $("today");
-var forecastSection = $("forecast");
+const UTILS_TEXT = {
+  HEADER: {
+    main: "Weather Dashboard",
+    searchCityForm: "Search for a City: ",
+  },
+  BUTTON: {
+    search: "Search",
+  },
+  PLACEHOLDER: {
+    inputCityName: "Enter name of the city",
+  },
+};
+
+const searchCityHeading = $("#form-heading");
+const searchForm = $("#search-form");
+const searchInput = $("#search-input");
+const searchBtn = $("#search-button");
+const historyDiv = $("#history");
+const todaySection = $("#today");
+const forecastSection = $("#forecast");
+
+const mainHeader = $("h1");
+
+const headerTxt = "Weather Dashboard";
+const headerForm = "Search for a City: ";
+
+var currentCity = "";
 
 const currentDate = dayjs();
+
+function loadAllInitialText() {
+  $(mainHeader).text(UTILS_TEXT.HEADER.main);
+  $(searchCityHeading).text(UTILS_TEXT.HEADER.searchCityForm);
+  $(searchBtn).text(UTILS_TEXT.BUTTON.search);
+  $(searchInput).attr("placeholder", UTILS_TEXT.PLACEHOLDER.inputCityName);
+}
 
 function getDirectGeocoding(cityName, apiKey) {}
 
 function getFiveDayWeatherInfo(lat, lon, apikey) {}
+
+function selectSearchedCity() {
+  currentCity = $(searchForm).val();
+
+  console.log(currentCity);
+}
+
+// set all text when HTML is loaded
+$(document).ready(function () {
+  loadAllInitialText();
+});
+
+$("#search-button").bind("click", function () {
+  selectSearchedCity();
+});
