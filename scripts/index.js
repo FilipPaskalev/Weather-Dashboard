@@ -138,7 +138,7 @@ const OPEN_WEATHER_PARAMS = {
 };
 
 const UTILS = {
-  text: {
+  htmlElTxt: {
     headers: {
       main: "Weather Dashboard",
       searchCityForm: "Search for a City: ",
@@ -182,10 +182,13 @@ var currentCity = {
 const currentDate = dayjs();
 
 function loadAllInitialText() {
-  $(mainHeader).text(UTILS_TEXT.HEADER.main);
-  $(searchCityHeading).text(UTILS_TEXT.HEADER.searchCityForm);
-  $(searchBtn).text(UTILS_TEXT.BUTTON.search);
-  $(searchInput).attr("placeholder", UTILS_TEXT.PLACEHOLDER.inputCityName);
+  $(mainHeader).text(UTILS.htmlElTxt.headers.main);
+  $(searchCityHeading).text(UTILS.htmlElTxt.headers.searchCityForm);
+  $(searchBtn).text(UTILS.htmlElTxt.buttons.search);
+  $(searchInput).attr(
+    "placeholder",
+    UTILS.htmlElTxt.placeholders.inputCityName
+  );
 }
 
 function getDirectGeocoding(cityName, apiKey) {}
@@ -201,8 +204,8 @@ function loadSearchedCitiesFromLocaleStorage(key) {}
 function getNameForSearchedCity() {
   $(searchForm).submit(function (event) {
     event.preventDefault();
-
     currentCity.name = $(searchInput).val();
+    console.log("🚀 ~ name:", currentCity.name);
   });
 }
 
