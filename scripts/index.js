@@ -7,23 +7,65 @@ const API_KEYS = {
 const OPEN_WEATHER_MAP_DOMAIN = {
   domain: "https://api.openweathermap.org",
   subdomains: {
-    weatherData: "data",
-    geocoding: "geo",
+    currentWeatherData: "data",
+    fiveDaysWeatherForecast: "data",
+    directGeocoding: "geo",
   },
   apiVersion: {
-    weatherData: "2.5",
-    geocoding: "1.0",
+    currentWeatherData: "2.5",
+    fiveDaysWeatherForecast: "2.5",
+    directGeocoding: "1.0",
   },
   searchKey: {
     currentWeatherData: "weather",
     fiveDaysWeatherForecast: "forecast",
+    directGeocoding: "direct",
   },
 };
 
 const OPEN_WEATHER_PARAMS = {
+  // Example API call https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
   // Example https://api.openweathermap.org/data/2.5/weather?lat=52.4796992&lon=-1.9026911&appid=ae3a76f05c3abe1e11d6e4bac3ee18fe
   // With param Birmingham
-  currentWeatherData: {},
+  currentWeatherData: {
+    latitude: {
+      key: "lat",
+      required: true,
+      description:
+        "Latitude. If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use our Geocoding API. Learn more at https://openweathermap.org/api/geocoding-api",
+    },
+    longitude: {
+      key: "lon",
+      required: true,
+      description:
+        "Longitude. If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use our Geocoding API. Learn more at https://openweathermap.org/api/geocoding-api",
+    },
+    apiKey: {
+      key: "appid",
+      required: true,
+      description:
+        "Your unique API key (you can always find it on your account page under the API key tab)",
+    },
+    responseFormat: {
+      key: "mode",
+      required: false,
+      description:
+        "Response format. JSON format is used by default. To get data in XML format use mode=xml. Learn more at https://openweathermap.org/forecast5#format",
+    },
+    units: {
+      key: "units",
+      required: false,
+      description:
+        "Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default. Learn more at https://openweathermap.org/forecast5#data",
+    },
+    language: {
+      key: "lang",
+      required: false,
+      description:
+        "You can use the lang parameter to get the output in your language. Learn more at https://openweathermap.org/multi",
+    },
+  },
+  // Example API call https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
   // Example https://api.openweathermap.org/data/2.5/forecast?lat=52.4796992&lon=-1.9026911&appid=89bcb64cccfd3cf71adffaab58499f00
   // With param Birmingham
   fiveDaysWeatherForecast: {
@@ -70,6 +112,7 @@ const OPEN_WEATHER_PARAMS = {
         "You can use the lang parameter to get the output in your language. Learn more at https://openweathermap.org/multi",
     },
   },
+  // Example API call http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
   // Example https://api.openweathermap.org/geo/1.0/direct?q=birmingham&appid=34e16918a61a82d1589798842ddb3d2e
   // With lat lon for Birmingham
   directGeocoding: {
