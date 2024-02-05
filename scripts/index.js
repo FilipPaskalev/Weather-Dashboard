@@ -96,6 +96,13 @@ const UTILS_TEXT = {
   },
 };
 
+const UTILS_SETTINGS = {
+  localeStorage: {
+    key: "cities",
+    limitOfSearchedCities: 6,
+  },
+};
+
 const searchCityHeading = $("#form-heading");
 const searchForm = $("#search-form");
 const searchInput = $("#search-input");
@@ -123,6 +130,12 @@ function loadAllInitialText() {
 function getDirectGeocoding(cityName, apiKey) {}
 
 function getFiveDayWeatherInfo(lat, lon, apikey) {}
+
+function removeCityFromLocaleStorage() {}
+
+function addCityToLocaleStorage(storageKey, cityName, lat, lon) {}
+
+function loadSearchedCitiesFromLocaleStorage(key) {}
 
 function selectSearchedCity() {
   currentCity = $(searchForm).val();
