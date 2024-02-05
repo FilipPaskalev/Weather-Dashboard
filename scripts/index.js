@@ -173,9 +173,6 @@ const forecastSection = $("#forecast");
 
 const mainHeader = $("h1");
 
-const headerTxt = "Weather Dashboard";
-const headerForm = "Search for a City: ";
-
 var currentCity = {
   name: "",
   lat: 0,
