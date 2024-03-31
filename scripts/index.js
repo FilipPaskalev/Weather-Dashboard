@@ -403,7 +403,7 @@ const createTodayWeatherCard = (
   tempMax,
   feelsLike
 ) => {
-  let backgroundImgURL = "../assets/11t2_ihy4_180703.jpg";
+  let backgroundImgURL = "assets/day-night-bg.jpg";
 
   return `<div class="container-fluid">
     <div class="row">
