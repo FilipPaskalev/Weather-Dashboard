@@ -36,7 +36,7 @@ Weather Dashboard is a web application that allows users to search for weather i
 - Geolocation API
 - GitHub
 
-## UX preview 
+## Mock-up
 
 ![weather-dashboard-UX](assets/ux-screenshot.png)
 
